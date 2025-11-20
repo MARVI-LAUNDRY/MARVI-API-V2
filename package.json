@@ -1,0 +1,30 @@
+{
+  "type": "module",
+  "name": "marvi-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "node --watch ./server.js",
+    "start": "node ./server.js",
+    "swagger-autogen": "node ./src/swagger/swagger.js",
+    "stripe-listen": ".\\src\\util\\stripe.exe listen --forward-to localhost:3000/webhook"
+  },
+  "keywords": [],
+  "author": "Ulises Noriega",
+  "description": "MARVI API",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cloudinary": "^2.8.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "google-auth-library": "^10.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.10",
+    "pg": "^8.16.3",
+    "stripe": "^19.3.1",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1"
+  }
+}

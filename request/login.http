@@ -1,0 +1,44 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2FjdGl2byI6ImFkbWluIiwidGlwb191c3VhcmlvIjoidXN1YXJpbyIsImlhdCI6MTc2MzY1NjIwMCwiZXhwIjoxNzYzNjU5ODAwfQ.SjR5jDRV8DW6StHaMtz0f0e7MV-F-4J0EWGrMPmYDHM
+
+### Iniciar sesión de un usuario
+POST http://localhost:3000/login/user
+Content-Type: application/json
+
+{
+  "usuario": "admin",
+  "contrasena": ""
+}
+
+### Cambiar Sesión de un usuario
+PUT http://localhost:3000/login/user/session
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "usuario": "juanperez",
+  "en_linea": true
+}
+
+### Cerrar todas las sesiones de usuarios
+POST http://localhost:3000/login/users/logout
+Authorization: Bearer {{token}}
+
+### Restablecer contraseña de un usuario
+POST http://localhost:3000/login/user/reset/password/juanperez
+
+### Iniciar sesión de un cliente
+POST http://localhost:3000/login/client
+Content-Type: application/json
+
+{
+  "correo": "juanperez@correo.com",
+  "contrasena": "nuevaContrasena"
+}
+
+### Restablecer contraseña de un cliente
+POST http://localhost:3000/login/client/reset/password
+Content-Type: application/json
+
+{
+  "correo": "juanperez@correo.com"
+}

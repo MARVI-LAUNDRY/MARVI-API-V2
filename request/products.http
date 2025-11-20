@@ -1,0 +1,61 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2FjdGl2byI6ImFkbWluIiwidGlwb191c3VhcmlvIjoidXN1YXJpbyIsImlhdCI6MTc2MzY2MzQ4OSwiZXhwIjoxNzYzNjY3MDg5fQ.cALcTLuWL-2wDuEweFnBcyKJRK9R9vF7XVX-UQ4ydbM
+
+### Resgistrar un producto
+POST http://localhost:3000/products
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "codigo": "PROD001",
+  "nombre": "Jabón Líquido",
+  "descripcion": "Jabón líquido para manos con aroma a lavanda",
+  "precio": 15.99,
+  "cantidad": 100,
+  "imagen_url": "https://res.cloudinary.com/di2ecyiwd/image/upload/v1762889835/cld-sample-5.jpg"
+}
+
+### Actualizar un producto
+PUT http://localhost:3000/products
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "id_producto": 1,
+  "codigo": "PROD001",
+  "nombre": "Jabón Líquido Premium",
+  "descripcion": "Jabón líquido para manos con aroma a lavanda y vitamina E",
+  "precio": 18.99,
+  "cantidad": 100,
+  "imagen_url": "https://res.cloudinary.com/di2ecyiwd/image/upload/v1762889835/cld-sample-5.jpg"
+}
+
+### Eliminar un producto
+DELETE http://localhost:3000/products/PROD001
+Authorization: Bearer {{token}}
+
+### Obtener un producto por código de producto
+GET http://localhost:3000/products/PROD001
+Authorization: Bearer {{token}}
+
+### Obtener todos los productos por filtro
+POST http://localhost:3000/products/filter
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "columna_orden": "nombre",
+  "orden": "ASC",
+  "limite": 10,
+  "desplazamiento": 0
+}
+
+### Obtener todos los productos por busqueda
+POST http://localhost:3000/products/search
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "busqueda": "Jabón",
+  "limite": 10,
+  "desplazamiento": 0
+}

@@ -1,0 +1,90 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2FjdGl2byI6ImFkbWluIiwidGlwb191c3VhcmlvIjoidXN1YXJpbyIsImlhdCI6MTc2MzY1NjIwMCwiZXhwIjoxNzYzNjU5ODAwfQ.SjR5jDRV8DW6StHaMtz0f0e7MV-F-4J0EWGrMPmYDHM
+
+### Resgistrar un usuario
+POST http://localhost:3000/users
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "usuario": "juanperez",
+  "nombre": "Juan",
+  "primer_apellido": "Perez",
+  "segundo_apellido": "Gomez",
+  "correo": "juanperez@correo.com",
+  "rol": "U"
+}
+
+### Actualizar un usuario
+PUT http://localhost:3000/users
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "id_usuario": 2,
+  "usuario": "juanperez",
+  "nombre": "Juan Carlos",
+  "primer_apellido": "Perez",
+  "segundo_apellido": "Gomez",
+  "correo": "juanperez@correo.com"
+}
+
+### Eliminar un usuario
+DELETE http://localhost:3000/users/juanperez
+Authorization: Bearer {{token}}
+
+### Cambiar el rol de un usuario
+PATCH http://localhost:3000/users/role
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "usuario": "juanperez",
+  "rol": "A"
+}
+
+### Cambiar la contraseña de un usuario
+PATCH http://localhost:3000/users/password
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "usuario": "juanperez",
+  "contrasena": "nuevaContrasena"
+}
+
+### Cambiar la imagen de un usuario
+PATCH http://localhost:3000/users/image
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "usuario": "juanperez",
+  "imagen_src": "https://res.cloudinary.com/di2ecyiwd/image/upload/v1762889835/cld-sample-5.jpg"
+}
+
+### Obtener un usuario por nombre de usuario
+GET http://localhost:3000/users/juanperez
+Authorization: Bearer {{token}}
+
+### Obtener todos los usuarios por filtro
+POST http://localhost:3000/users/filter
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "columna_orden": "nombre_completo",
+  "orden": "ASC",
+  "limite": 10,
+  "desplazamiento": 0
+}
+
+### Obtener todos los usuarios por busqueda
+POST http://localhost:3000/users/search
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "busqueda": "Juan",
+  "limite": 10,
+  "desplazamiento": 0
+}

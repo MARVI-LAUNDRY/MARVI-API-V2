@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="_href_iicon.png">
+    <title>Resultado de pago</title>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            margin: 0;
+            background-color: #dd5746;
+            color: #2d3e58;
+            width: 100vw;
+            height: 100vh;
+            align-content: center;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+            background-color: white;
+            margin: 0 auto;
+            padding: 32px;
+            width: 70%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+
+        button {
+            background: #dd5746;
+            color: white;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            padding: 8px 20px;
+            outline: none;
+        }
+
+        button:hover {
+            background: #e96d5c;
+            color: white;
+        }
+
+        button:active {
+            background: #dd5746;
+            color: white;
+        }
+
+        button:disabled {
+            background: #dcdfe3;
+            border-color: #b8bfc5;
+        }
+    </style>
+</head>
+<body>
+<section class="container">
+    <img src="_href_llogo.png" alt="MARVI logo" width="192"/>
+    <div id="payment-result">
+    </div>
+    <button type="button" onclick="window.close()">Aceptar y volver</button>
+</section>
+
+<script>
+    // Función para obtener los parámetros de la URL
+    function getPathParam() {
+        const path = window.location.pathname;
+        const segments = path.split('/');
+        return segments[segments.length - 1] || segments[segments.length - 2];
+    }
+
+    // Mostrar el resultado del pago basado en los parámetros de la URL
+    document.addEventListener("DOMContentLoaded", () => {
+        const status = getPathParam();
+        const paymentResultDiv = document.getElementById("payment-result");
+
+        if (status === "success") {
+            paymentResultDiv.innerHTML = "<h1>¡Pago realizado con éxito!</h1>";
+        } else if (status === "cancel") {
+            paymentResultDiv.innerHTML = "<h1>El pago fue cancelado.</h1>";
+        } else {
+            paymentResultDiv.innerHTML = "<h1>Estado de pago desconocido.</h1>";
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2FjdGl2byI6ImFkbWluIiwidGlwb191c3VhcmlvIjoidXN1YXJpbyIsImlhdCI6MTc2MzY2MzQ4OSwiZXhwIjoxNzYzNjY3MDg5fQ.cALcTLuWL-2wDuEweFnBcyKJRK9R9vF7XVX-UQ4ydbM
+
+### Resgistrar un pedido
+POST http://localhost:3000/orders
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "cliente": "juanperez",
+  "productos": [
+    {
+      "codigo": "PROD001",
+      "cantidad": 1
+    }
+  ],
+  "descuento": 0
+}
+
+### Actualizar un pedido
+PUT http://localhost:3000/orders
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "folio": "ORD20251120-1636091",
+  "estado": "E"
+}
+
+### Cancelar un pedido
+DELETE http://localhost:3000/orders/ORD20251120-1636091
+Authorization: Bearer {{token}}
+
+### Obtener un pedido por folio
+GET http://localhost:3000/orders/ORD20251120-1636091
+Authorization: Bearer {{token}}
+
+### Obtener los detalles de un pedido por folio
+GET http://localhost:3000/orders/details/ORD20251120-1636091
+Authorization: Bearer {{token}}
+
+### Obtener todos los pedidos de un cliente
+GET http://localhost:3000/orders/client/juanperez
+Authorization: Bearer {{token}}
+
+### Obtener todos los pedidos por filtro
+POST http://localhost:3000/orders/filter
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "columna_orden": "folio",
+  "orden": "ASC",
+  "limite": 10,
+  "desplazamiento": 0
+}
+
+### Obtener todos los pedidos por busqueda
+POST http://localhost:3000/orders/search
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "busqueda": "Juan",
+  "limite": 10,
+  "desplazamiento": 0
+}

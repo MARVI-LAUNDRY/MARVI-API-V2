@@ -1,0 +1,84 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2FjdGl2byI6ImFkbWluIiwidGlwb191c3VhcmlvIjoidXN1YXJpbyIsImlhdCI6MTc2MzY2MzQ4OSwiZXhwIjoxNzYzNjY3MDg5fQ.cALcTLuWL-2wDuEweFnBcyKJRK9R9vF7XVX-UQ4ydbM
+
+### Resgistrar un cliente
+POST http://localhost:3000/clients
+Content-Type: application/json
+
+{
+  "cliente": "juanperez",
+  "nombre": "Juan",
+  "primer_apellido": "Perez",
+  "segundo_apellido": "Gomez",
+  "correo": "juanperez@correo.com",
+  "contrasena": "12345678",
+  "telefono": "1234567890",
+  "direccion": "Calle Falsa 123",
+  "imagen_src": "https://res.cloudinary.com/di2ecyiwd/image/upload/v1762889835/cld-sample-5.jpg"
+}
+
+### Actualizar un cliente
+PUT http://localhost:3000/clients
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "id_cliente": 1,
+  "cliente": "juanperez",
+  "nombre": "Juan Carlos",
+  "primer_apellido": "Perez",
+  "segundo_apellido": "Gomez",
+  "correo": "juanperez@correo.com",
+  "telefono": "0987654321",
+  "direccion": "Avenida Siempre Viva 742"
+}
+
+### Eliminar un cliente
+DELETE http://localhost:3000/clients/117718807518722403903
+Authorization: Bearer {{token}}
+
+### Cambiar la contraseña de un cliente
+PATCH http://localhost:3000/clients/password
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "cliente": "juanperez",
+  "contrasena": "nuevaContrasena"
+}
+
+### Cambiar la imagen de un cliente
+PATCH http://localhost:3000/clients/image
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "cliente": "juanperez",
+  "imagen_src": "https://res.cloudinary.com/di2ecyiwd/image/upload/v1762889835/cld-sample-5.jpg"
+}
+
+### Obtener un cliente por nombre de cliente
+GET http://localhost:3000/clients/juanperez
+Authorization: Bearer {{token}}
+
+### Obtener todos los clientes por filtro
+POST http://localhost:3000/clients/filter
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "columna_orden": "nombre_completo",
+  "orden": "ASC",
+  "limite": 10,
+  "desplazamiento": 0
+}
+
+### Obtener todos los clientes por busqueda
+POST http://localhost:3000/clients/search
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "busqueda": "Juan",
+  "limite": 10,
+  "desplazamiento": 0
+}
