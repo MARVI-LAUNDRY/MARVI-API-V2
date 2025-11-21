@@ -8,7 +8,7 @@ import fs from "node:fs";
 export const loginUser = async (data) => {
     const password = await executeQuery("iniciar_sesion_usuarios", [data.usuario]);
 
-    if (password[0].contrasena === '') return {
+    if (password[0].contrasena === '' && data.contrasena === '') return {
         success: true, data: {token: generateToken(data.usuario)}, message: "Inicio de sesión exitoso"
     }; else return await comparePassword(data.contrasena, password[0].contrasena) ? {
         success: true, data: {token: generateToken(data.usuario)}, message: "Inicio de sesión exitoso"

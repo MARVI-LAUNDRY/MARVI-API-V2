@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2FjdGl2byI6ImFkbWluIiwidGlwb191c3VhcmlvIjoidXN1YXJpbyIsImlhdCI6MTc2MzY1NjIwMCwiZXhwIjoxNzYzNjU5ODAwfQ.SjR5jDRV8DW6StHaMtz0f0e7MV-F-4J0EWGrMPmYDHM
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2FjdGl2byI6ImFkbWluIiwidGlwb191c3VhcmlvIjoidXN1YXJpbyIsImlhdCI6MTc2MzcwNTM1OSwiZXhwIjoxNzYzNzA4OTU5fQ.rKYtOmD2-3z2xNMzEGUFSpnxwIFTr5c-VLAnC1rPlcg
 
 ### Iniciar sesión de un usuario
 POST http://localhost:3000/login/user
