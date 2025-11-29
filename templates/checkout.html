@@ -59,7 +59,7 @@
     <img src="_href_llogo.png" alt="MARVI logo" width="192"/>
     <div id="payment-result">
     </div>
-    <button type="button" onclick="window.close()">Aceptar y volver</button>
+    <button type="button" id="close">Aceptar y volver</button>
 </section>
 
 <script>
@@ -69,6 +69,16 @@
         const segments = path.split('/');
         return segments[segments.length - 1] || segments[segments.length - 2];
     }
+
+    document.getElementById('close').addEventListener('click', () => {
+        window.close();
+        // Si no se puede cerrar, redirigir después de un delay
+        setTimeout(() => {
+            if (!window.closed) {
+                window.history.back();
+            }
+        }, 100);
+    });
 
     // Mostrar el resultado del pago basado en los parámetros de la URL
     document.addEventListener("DOMContentLoaded", () => {

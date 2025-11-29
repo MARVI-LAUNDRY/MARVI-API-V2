@@ -77,48 +77,18 @@ export const changeProductQuantityHandler = async (req, res) => {
 
 // Controlador para obtener un producto
 export const getProductByCodeHandler = async (req, res) => {
-    const tipo = req.user.tipo_usuario
-
-    if (tipo !== 'usuario') {
-        return res.status(403).json({
-            success: false,
-            message: "Permisos necesarios",
-            error: 'Acceso denegado. Solo los administradores pueden ver los productos.'
-        });
-    }
-
     const requiredFields = ['codigo'];
     await handleRequest(req, res, requiredFields, getProductByCode, {useParams: true, unwrapData: true});
 };
 
 // Controlador para filtrar productos
 export const getProductsByFilterHandler = async (req, res) => {
-    const tipo = req.user.tipo_usuario
-
-    if (tipo !== 'usuario') {
-        return res.status(403).json({
-            success: false,
-            message: "Permisos necesarios",
-            error: 'Acceso denegado. Solo los administradores pueden ver los productos.'
-        });
-    }
-
     const requiredFields = ['columna_orden', 'orden', 'limite', 'desplazamiento'];
     await handleRequest(req, res, requiredFields, getProductsByFilter);
 };
 
 // Controlador para buscar productos
 export const getProductsBySearchHandler = async (req, res) => {
-    const tipo = req.user.tipo_usuario
-
-    if (tipo !== 'usuario') {
-        return res.status(403).json({
-            success: false,
-            message: "Permisos necesarios",
-            error: 'Acceso denegado. Solo los administradores pueden ver los productos.'
-        });
-    }
-
     const requiredFields = ['busqueda', 'limite', 'desplazamiento'];
     await handleRequest(req, res, requiredFields, getProductsBySearch);
 };

@@ -56,20 +56,36 @@ export const resetUserPasswordHandler = async (req, res) => {
 
 // Controlador para iniciar sesión de un cliente
 export const loginClientHandler = async (req, res) => {
-    const requiredFields = ['cliente', 'contrasena'];
-    const correo = req.body.correo.trim();
-    const result = await getClientByEmail(correo);
-    if (result.cliente) req.body.cliente = result.cliente
-    await handleRequest(req, res, requiredFields, loginClient);
+    try {
+        const requiredFields = ['cliente', 'contrasena'];
+        const correo = req.body.correo.trim();
+        const result = await getClientByEmail(correo);
+        if (result.cliente) req.body.cliente = result.cliente
+        await handleRequest(req, res, requiredFields, loginClient);
+    } catch (error) {
+        return res.status(403).json({
+            success: false,
+            message: "Inicio de sesión fallido",
+            error: "Usuario o contraseña incorrectos"
+        })
+    }
 };
 
 // Controlador para restablecer la contraseña de un cliente
 export const resetClientPasswordHandler = async (req, res) => {
-    const requiredFields = ['cliente'];
-    const correo = req.body.correo.trim();
-    const result = await getClientByEmail(correo);
-    if (result.cliente) req.body.cliente = result
-    await handleRequest(req, res, requiredFields, resetClientPassword, {unwrapData: true});
+    try {
+        const requiredFields = ['cliente'];
+        const correo = req.body.correo.trim();
+        const result = await getClientByEmail(correo);
+        if (result.cliente) req.body.cliente = result
+        await handleRequest(req, res, requiredFields, resetClientPassword, {unwrapData: true});
+    } catch (error) {
+        return res.status(403).json({
+            success: false,
+            message: "Restablecimiento de contraseña fallido",
+            error: error.message
+        })
+    }
 };
 
 // Controlador para autenticar o registrar usuario desde Google
